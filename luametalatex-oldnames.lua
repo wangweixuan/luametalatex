@@ -56,6 +56,8 @@ rewrite(node.direct)
   ('unprotect_glyph', 'unprotectglyph')
   ('unprotect_glyphs', 'unprotectglyphs')
   ('uses_font', 'usesfont')
+  ('set_attribute', 'setattribute')
+  ('traverse_glyph', 'traverseglyph')
 
 rewrite(token)
   ('get_meaning', 'getmeaning')

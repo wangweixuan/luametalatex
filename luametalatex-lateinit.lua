@@ -6,12 +6,18 @@ if initex then
   lua.prepared_code = {false}
 end
 
-bit32 = require'luametalatex-bit32' -- Why? And why so early?
-status.init_kpse = 1 -- Why?
+tex.luatexversion = status.luatex_version * 100 + status.luatex_revision
+tex.luatexrevision = status.luatex_release
+
+bit32 = require'luametalatex-bit32' -- required by lualibs-extended-merged.lua
+-- status.init_kpse = 1 -- Why?
 status.safer_option = 0 -- compat
 status.shell_escape = 0 -- compat -- This is currently a lie.
 -- require'module' -- ???
 pdf = {
+  getcreationdate = function()
+    return "D:19700101000000+00'00'"
+  end,
   variable = {},
 }
 require'luametalatex-font-resolve' -- Replace font.define. Must be loaded before callbacks

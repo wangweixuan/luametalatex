@@ -1,23 +1,23 @@
-do
-  -- texconfig.formatname = lua.startupfile:match('[/\\]([^/\\]*)%-init%.lua$')
-  local function try_lib(name)
-    local path = string.format('%s/lib/luametatex/lua/%s.%s', os.selfdir, name,
-      os.type == 'windows' and 'dll' or os.name == 'macosx' and 'dylib' or 'so')
-    local lib, msg = package.loadlib(path, '*')
-    if lib then
-      return path
-    else
-      print(msg)
-    end
-  end
-  local library  = try_lib'luametalatex' or try_lib'kpse'
-  if not library then
-    error[[C support library not found. Please fix your installation]]
-  end
-  kpse = assert(package.loadlib(library, 'luaopen_luametalatex_kpse') or package.loadlib(library, 'luaopen_kpse'))()
-  package.loaded.kpse = kpse
-  package.preload.luaharfbuzz = package.loadlib(library, 'luaopen_luametalatex_harfbuzz') or package.loadlib(library, 'luaopen_luametalatex_harfbuzz') or nil
-end
+-- do
+--   -- texconfig.formatname = lua.startupfile:match('[/\\]([^/\\]*)%-init%.lua$')
+--   local function try_lib(name)
+--     local path = string.format('%s/lib/luametatex/lua/%s.%s', os.selfdir, name,
+--       os.type == 'windows' and 'dll' or os.name == 'macosx' and 'dylib' or 'so')
+--     local lib, msg = package.loadlib(path, '*')
+--     if lib then
+--       return path
+--     else
+--       print(msg)
+--     end
+--   end
+--   local library  = try_lib'luametalatex' or try_lib'kpse'
+--   if not library then
+--     error[[C support library not found. Please fix your installation]]
+--   end
+--   kpse = assert(package.loadlib(library, 'luaopen_luametalatex_kpse') or package.loadlib(library, 'luaopen_kpse'))()
+--   package.loaded.kpse = kpse
+--   package.preload.luaharfbuzz = package.loadlib(library, 'luaopen_luametalatex_harfbuzz') or package.loadlib(library, 'luaopen_luametalatex_harfbuzz') or nil
+-- end
 do
   local arg_pattern = '-' * lpeg.P'-'^-1 * lpeg.C((1-lpeg.P'=')^1) * ('=' * lpeg.C(lpeg.P(1)^0) + lpeg.Cc(true))
   for _, a in ipairs(arg) do
