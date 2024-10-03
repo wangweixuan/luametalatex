@@ -77,3 +77,7 @@ function node.kerning(h, t)
   local h, t, s = kerning(todirect(h), todirect(t))
   return tonode(h), tonode(t), s
 end
+
+function node.next(n)
+  return n.next
+end

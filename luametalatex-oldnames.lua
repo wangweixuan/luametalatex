@@ -58,6 +58,7 @@ rewrite(node.direct)
   ('uses_font', 'usesfont')
   ('set_attribute', 'setattribute')
   ('traverse_glyph', 'traverseglyph')
+  ('getlang', 'getlanguage')
 
 rewrite(token)
   ('get_meaning', 'getmeaning')
@@ -82,6 +83,9 @@ rewrite(token)
   ('set_macro', 'setmacro')
   ('set_char', 'setchar')
   ('is_defined', 'isdefined')
+
+rewrite(lfs)
+  ('symlinkattributes', 'attributes')
 
 do
   lang = {}
