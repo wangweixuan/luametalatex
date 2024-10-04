@@ -6,8 +6,8 @@ if initex then
   lua.prepared_code = {false}
 end
 
-tex.luatexversion = status.luatex_version * 100 + status.luatex_revision
-tex.luatexrevision = status.luatex_release
+tex.luatexversion = status.luatex_version
+tex.luatexrevision = status.luatex_revision
 
 bit32 = require'luametalatex-bit32' -- required by lualibs-extended-merged.lua
 -- status.init_kpse = 1 -- Why?

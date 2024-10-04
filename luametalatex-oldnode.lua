@@ -81,3 +81,6 @@ end
 function node.next(n)
   return n.next
 end
+function node.getglue(n, ...)
+  return node.direct.getglue(todirect(n), ...)
+end

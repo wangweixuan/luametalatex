@@ -332,6 +332,10 @@ lmlt.luacmd("latelua", function() -- \latelua
   node.direct.write(whatsit)
 end, "protected")
 
+new_whatsit("user_defined", function()
+  -- nothing to do
+end)
+
 lmlt.luacmd("lmltx@letfont", function(_, prefix)
   if immediate == "value" then return end
   local macro = scan_csname(true)
